@@ -2,6 +2,7 @@ package it.kolerz.kframework
 
 import it.kolerz.kframework.command.CommandBuilder
 import it.kolerz.kframework.command.CommandContext
+import it.kolerz.kframework.command.KFrameworkCommand
 import it.kolerz.kframework.listener.KotlinListener
 import org.bukkit.command.CommandExecutor
 import org.bukkit.event.Listener
@@ -35,16 +36,26 @@ abstract class KotlinFramework : JavaPlugin() {
 
     override fun onEnable() {
         instance = this
+        logger.info("╔══════════════════════════════════════╗")
+        logger.info("║         KotlinFramework v1.0.0       ║")
+        logger.info("║                                      ║")
+        logger.info("║  Lightweight Kotlin framework for    ║")
+        logger.info("║  Paper plugin development.           ║")
+        logger.info("║                                      ║")
+        logger.info("║  Author: Kolerz_                      ║")
+        logger.info("║  GitHub: github.com/kolerz/kframework║")
+        logger.info("╚══════════════════════════════════════╝")
         logger.info("╔══════════════════════════════╗")
         logger.info("║  ${description.name} v${description.version}")
         logger.info("║  by ${description.authors.joinToString(", ")}")
-        logger.info("║  Powered by Kotlin Framework")
+        logger.info("║  Powered by KotlinFramework")
         logger.info("╚══════════════════════════════╝")
+        getCommand("kframework")?.setExecutor(KFrameworkCommand())
         try {
             onStart()
             logger.info("[${description.name}] plugin enabled")
         } catch (e: Exception) {
-            logger.severe("[${description.name}] Errore durante l'avvio: ${e.message}")
+            logger.severe("[${description.name}] Error: ${e.message}")
             server.pluginManager.disablePlugin(this)
         }
     }
@@ -53,7 +64,7 @@ abstract class KotlinFramework : JavaPlugin() {
         try {
             onStop()
         } catch (e: Exception) {
-            logger.severe("[${description.name}] Errore durante lo shutdown: ${e.message}")
+            logger.severe("[${description.name}] Error: ${e.message}")
         }
         logger.info("[${description.name}] plugin disabled")
     }
@@ -80,7 +91,7 @@ abstract class KotlinFramework : JavaPlugin() {
     fun registerCommand(name: String, executor: CommandExecutor) {
         val cmd = getCommand(name)
         if (cmd == null) {
-            logger.warning("Comando '$name' non trovato nel plugin.yml!")
+            logger.warning("Command '$name' not found in plugin.yml")
             return
         }
         cmd.setExecutor(executor)
@@ -98,7 +109,7 @@ abstract class KotlinFramework : JavaPlugin() {
     fun registerCommand(name: String, playerOnly: Boolean = false, permission: String? = null, executor: CommandContext.() -> Unit) {
         val cmd = getCommand(name)
         if (cmd == null) {
-            logger.warning("Comando '$name' non trovato nel plugin.yml!")
+            logger.warning("Command '$name' not found in plugin.yml")
             return
         }
         cmd.setExecutor(CommandBuilder(playerOnly, permission, executor = executor))
