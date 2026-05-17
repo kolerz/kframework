@@ -1,6 +1,11 @@
-name: kframework
-version: '1.0-SNAPSHOT'
-
+name: KotlinFramework
+version: '1.0.1'
 main: it.kolerz.kframework.KotlinFramework
 api-version: '1.21'
-load: POSTWORLD
+authors: [kolerz]
+description: Lightweight Kotlin framework for Paper plugin development
+
+commands:
+  kframework:
+    description: KotlinFramework info command
+    aliases: [kfw]
