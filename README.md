@@ -1,5 +1,4 @@
 # KotlinFramework
-
 A small framework for writing Paper plugins in Kotlin without the usual boilerplate.
 
 I built this because I got tired of copy-pasting the same companion object, instance, and registerEvents setup into every plugin. It's not trying to replace anything, it just cuts out the repetitive parts.
@@ -20,7 +19,19 @@ I built this because I got tired of copy-pasting the same companion object, inst
 
 ## Installation
 
-### Maven Local (local dev)
+### JitPack (recommended)
+
+```kotlin
+repositories {
+    maven("https://jitpack.io")
+}
+
+dependencies {
+    implementation("com.github.kolerz:kframework:1.0.0")
+}
+```
+
+### Maven Local (local dev only)
 
 ```bash
 ./gradlew publishToMavenLocal
@@ -36,7 +47,7 @@ dependencies {
 }
 ```
 
-Make sure to use `shadowJar` to bundle the framework into your plugin jar, otherwise it won't load.
+> Make sure to use `shadowJar` to bundle the framework into your plugin jar, otherwise it won't load on the server.
 
 ---
 
