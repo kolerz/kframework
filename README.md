@@ -9,8 +9,8 @@ I built this because I got tired of copy-pasting the same companion object, inst
 ## What it does
 
 - Base class (`KotlinFramework`) that handles `instance`, logging, and safe startup/shutdown
-- Inline command registration — no separate class needed for simple commands
-- Inline event listening — no `@EventHandler`, no separate Listener class
+- Inline command registration: no separate class needed for simple commands
+- Inline event listening: no `@EventHandler`, no separate Listener class
 - `KotlinCommand` base class for commands that need their own file
 - Scheduler helpers: `runLater`, `runTimer`, `runAsync`
 - Config helpers: `saveLocation`, `getLocation`, `config`, `setConfig`
