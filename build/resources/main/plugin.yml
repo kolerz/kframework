@@ -1,0 +1,6 @@
+name: kframework
+version: '1.0-SNAPSHOT'
+
+main: it.kolerz.kframework.KotlinFramework
+api-version: '1.21'
+load: POSTWORLD
