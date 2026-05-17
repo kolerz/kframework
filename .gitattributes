@@ -1,0 +1,2 @@
+*.html linguist-detectable=false
+gradlew linguist-vendored=true
